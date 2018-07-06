@@ -9,10 +9,12 @@ const AWS = require('aws-sdk');
 const path = require('path');
 const queueUrl = process.env.QUEUE_URL;
 
+
+
 let createQueue = () => {
-    AWS.config.update({region: 'us-west-2'});
     AWS.config.loadFromPath(__dirname + '/config.json');
-    
+    AWS.config.update({region: 'us-west-2'});
+  
     let sqs = new AWS.SQS({apiVersion: '2018-06-14'})
 
     let params = {
