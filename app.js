@@ -3,10 +3,10 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const newOrder = require('./routes/new-order');
-const home = require('./routes/home')
 const AWS = require('aws-sdk');
 const path = require('path');
+const newOrder = require('./routes/new-order');
+const home = require('./routes/home')
 const queueUrl = process.env.QUEUE_URL;
 
 
@@ -45,9 +45,8 @@ app.engine('.hbs', exphbs({
 
 
 app.use('/', home);
+app.use('/new-order', newOrder)
 
 app.listen(PORT, () => {
     console.log(`Server started, listening on ${PORT}`);
 })
-
-createQueue();
